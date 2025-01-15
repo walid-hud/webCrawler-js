@@ -2,13 +2,15 @@
   "name": "js_http",
   "version": "1.0.0",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
-    "start" : "node index.mjs"
+    "start": "node index.js",
+    "test": ""
   },
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
