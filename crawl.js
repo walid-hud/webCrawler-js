@@ -3,12 +3,27 @@ const colors = require('colors')
 
 
 async function crawl(URL){
+    try{
     console.log(`crawling  ${URL} ` .blue)
-    const page = await fetch(URL)
-    const pageHtml = await page.text()
+    const response = await fetch(URL)
+
+    if(response.status > 399){
+        console.log("the website's server is being a bitch..." .bgRed)
+        return
+    }
+    if(!response.headers.get('content-type').includes("text/html")){
+        console.log("the website's server is not responding with what you want..." .bgYellow )
+        return
+    }
+
+
+    const pageHtml = await response.text()
     const dom = new JSDOM(pageHtml)
     console.log(dom.window.document.title .rainbow)
     process.exit(0)
+    }catch(err){
+        console.log(err.message)
+    }
 }
 
 
